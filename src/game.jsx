@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Square = function(props) {
+const Square = props => {
   return (
     <button className="square" onClick={props.onClick}>
       {props.value}
@@ -8,7 +8,7 @@ const Square = function(props) {
   );
 }
 
-class Board extends React.Component {
+class Board extends React.PureComponent {
   constructor() {
     super();
     this.state = {
@@ -92,20 +92,18 @@ class Board extends React.Component {
   }
 }
 
-class Game extends React.Component {
-  render() {
-    return (
-      <div className="game">
-        <div className="game-board">
-          <Board />
-        </div>
-        <div className="game-info">
-          <div>{/* status */}</div>
-          <ol>{/* TODO */}</ol>
-        </div>
+const Game = props => {
+  return (
+    <div className="game">
+      <div className="game-board">
+        <Board />
       </div>
-    );
-  }
+      <div className="game-info">
+        <div>{/* status */}</div>
+        <ol>{/* TODO */}</ol>
+      </div>
+    </div>
+  );
 }
 
 export default Game;
